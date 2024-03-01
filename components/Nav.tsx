@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 export default function Nav() {
   const links = [
@@ -59,13 +60,13 @@ export default function Nav() {
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {links.map(({ href, label }) => (
-                  <a
+                  <Link
                     key={href}
                     href={href}
                     className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >
                     {label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

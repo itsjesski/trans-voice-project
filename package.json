@@ -11,7 +11,8 @@
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
-    "test-all": "npm run lint && npm run type-check && npm run test"
+    "test-all": "npm run lint && npm run type-check && npm run test",
+    "tailwind": "tailwindcss -i ./css/style.css -o ./css/style.css"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [

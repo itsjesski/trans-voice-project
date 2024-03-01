@@ -1,6 +1,7 @@
 import Link from "next/link";
 import dbConnect from "../lib/dbConnect";
 import Pet, { Pets } from "../models/Pet";
+import Hero from "../components/Hero";
 import { GetServerSideProps } from "next";
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
 const Index = ({ pets }: Props) => {
   return (
     <>
+      <Hero></Hero>
       {pets.map((pet) => (
         <div key={pet._id}>
           <div className="card">
