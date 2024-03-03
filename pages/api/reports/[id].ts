@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../../lib/dbConnect";
-import Report from "../../../models/Report";
+import { ReportModel } from "../../../models/Report";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,7 +16,7 @@ export default async function handler(
   switch (method) {
     case "GET" /* Get a model by its ID */:
       try {
-        const report = await Report.findById(id);
+        const report = await ReportModel.findById(id);
         if (!report) {
           return res.status(400).json({ success: false });
         }
@@ -28,7 +28,7 @@ export default async function handler(
 
     case "PUT" /* Edit a model by its ID */:
       try {
-        const report = await Report.findByIdAndUpdate(id, req.body, {
+        const report = await ReportModel.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         });
@@ -43,7 +43,7 @@ export default async function handler(
 
     case "DELETE" /* Delete a model by its ID */:
       try {
-        const deletedReport = await Report.deleteOne({ _id: id });
+        const deletedReport = await ReportModel.deleteOne({ _id: id });
         if (!deletedReport) {
           return res.status(400).json({ success: false });
         }

@@ -1,26 +1,38 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
 export interface Rating extends mongoose.Document {
-  id: number;
-  rating: number;
-  comment: string /* Optional, not sure if we'll use this or not. */;
+  voice?: Types.ObjectId;
+  createdBy?: Types.ObjectId;
+  value: unknown /* Not sure what this will be yet. */;
+  comment?: string /* MVP + 1 */;
 }
 
-/* RatingSchema will correspond to a collection in your MongoDB database. */
-const RatingSchema = new mongoose.Schema<Rating>({
-  id: {
-    type: Number,
-    required: [true, "Please provide an id for this rating."],
+const RatingSchema = new mongoose.Schema<Rating>(
+  {
+    voice: {
+      type: Schema.Types.ObjectId,
+      ref: "Voice",
+      required: [true, "Voice ref required"],
+    },
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    value: {
+      type: Schema.Types
+        .Mixed /* TODO: update this to the correct type once we know */,
+      required: [true, "Value required"],
+    },
+    comment: {
+      type: String,
+      required: false,
+      maxlength: [100, "Comment cannot be more than 100 characters"],
+    },
   },
-  rating: {
-    type: Number,
-    required: [true, "Please provide a rating for this voice."],
-  },
-  comment: {
-    type: String,
-    maxlength: [100, "Comment cannot be more than 100 characters"],
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
-export default mongoose.models.Rating ||
-  mongoose.model<Rating>("Rating", RatingSchema);
+export const RatingModel =
+  mongoose.models.Rating || mongoose.model<Rating>("Rating", RatingSchema);

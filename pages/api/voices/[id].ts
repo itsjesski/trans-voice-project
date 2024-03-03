@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../../lib/dbConnect";
-import Voice from "../../../models/Voice";
+import { VoiceModel } from "../../../models/Voice";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,7 +16,7 @@ export default async function handler(
   switch (method) {
     case "GET" /* Get a model by its ID */:
       try {
-        const voice = await Voice.findById(id);
+        const voice = await VoiceModel.findById(id);
         if (!voice) {
           return res.status(400).json({ success: false });
         }
@@ -28,7 +28,7 @@ export default async function handler(
 
     case "PUT" /* Edit a model by its ID */:
       try {
-        const voice = await Voice.findByIdAndUpdate(id, req.body, {
+        const voice = await VoiceModel.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         });
@@ -43,7 +43,7 @@ export default async function handler(
 
     case "DELETE" /* Delete a model by its ID */:
       try {
-        const deletedVoice = await Voice.deleteOne({ _id: id });
+        const deletedVoice = await VoiceModel.deleteOne({ _id: id });
         if (!deletedVoice) {
           return res.status(400).json({ success: false });
         }

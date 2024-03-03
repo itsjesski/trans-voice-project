@@ -1,26 +1,44 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
 export interface Voice extends mongoose.Document {
-  id: number;
-  ratings: number[];
-  reports: number[];
+  url: string;
+  title: string;
+  status: "public" | "unlisted" | "private";
+  createdBy: Types.ObjectId;
+  ratings: Types.ObjectId[];
+  allowComments?: boolean;
 }
 
-/* VoiceSchema will correspond to a collection in your MongoDB database. */
-const VoiceSchema = new mongoose.Schema<Voice>({
-  id: {
-    type: Number,
-    required: [true, "Please provide an id for this voice."],
+const VoiceSchema = new mongoose.Schema<Voice>(
+  {
+    url: {
+      type: String,
+      required: [true, "URL required"],
+    },
+    title: {
+      type: String,
+      required: [true, "Title required"],
+    },
+    status: {
+      type: String,
+      enum: ["public", "unlisted", "private"],
+      required: [true, "Status required"],
+    },
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: [true, "Created by required"],
+    },
+    ratings: [{ type: Schema.Types.ObjectId, ref: "Rating" }],
+    allowComments: {
+      type: Boolean,
+      default: false,
+    },
   },
-  ratings: {
-    /* This is an array of rating_ids to associate ratings with this voice. */
-    type: [Number],
-  },
-  reports: {
-    /* This is an array of report_ids to associate reports with this voice. */
-    type: [Number],
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
-export default mongoose.models.Voice ||
-  mongoose.model<Voice>("Voice", VoiceSchema);
+export const VoiceModel =
+  mongoose.models.Voice || mongoose.model<Voice>("Voice", VoiceSchema);
