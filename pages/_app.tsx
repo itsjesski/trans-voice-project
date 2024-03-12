@@ -1,5 +1,4 @@
 import "../css/globals.css";
-import "../css/style.css";
 import Head from "next/head";
 import type { AppProps } from "next/app";
 import Nav from "../components/Nav";
