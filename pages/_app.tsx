@@ -1,3 +1,4 @@
+import "../css/globals.css";
 import "../css/style.css";
 import Head from "next/head";
 import type { AppProps } from "next/app";
@@ -10,10 +11,16 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Trans Voice Project</title>
       </Head>
 
-      <div className="top-bar">
-        <Nav />
+      <div
+        className="leading-normal tracking-normal text-indigo-400 m-6 bg-cover bg-fixed"
+        style={{ backgroundImage: "url('header.png')" }}
+      >
+        <div className="h-full">
+          <Nav />
+        </div>
       </div>
-      <div className="wrapper grid">
+
+      <div className="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <Component {...pageProps} />
       </div>
     </>
