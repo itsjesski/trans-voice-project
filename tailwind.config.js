@@ -8,7 +8,15 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        transblue: "#5BCEFA",
+        transpink: "#F5A9B8",
+      },
+      backgroundImage: {
+        sitebackground: "url('header.png')",
+      },
+    },
   },
   variants: {
     extend: {},

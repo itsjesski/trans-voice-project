@@ -7,15 +7,15 @@ const Index = ({}: Props) => {
   return (
     <>
       <div className="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-        <h1 className="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
-          Main
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-            Hero Message
+        <h1 className="my-4 text-3xl md:text-5xl text-transblue opacity-75 font-bold leading-tight text-center md:text-left">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-transblue via-white to-transpink">
+            Share Your Voice!
           </span>
-          to sell yourself!
         </h1>
-        <p className="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
-          Sub-hero message, not too long and not too short. Make it just right!
+        <p className="leading-normal text-base md:text-2xl mb-8 text-center md:text-left text-white">
+          Get unbiased feedback on your voice from the community. Just upload a
+          clip, let people review it, and then come back later to view your
+          feedback!
         </p>
       </div>
 
