@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
 
       <div
-        className="leading-normal tracking-normal text-indigo-400 bg-cover bg-fixed"
+        className="leading-normal tracking-normal text-indigo-400 bg-cover bg-fixed min-h-screen"
         style={{ backgroundImage: "url('header.png')" }}
       >
         <div className="h-full">

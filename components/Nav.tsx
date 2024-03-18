@@ -6,6 +6,7 @@ export default function Nav() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/dashboard", label: "Dashboard" },
+    { href: "/voice", label: "Rate" },
   ];
 
   return (

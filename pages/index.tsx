@@ -1,4 +1,3 @@
-import Hero from "../components/Hero";
 import { GetServerSideProps } from "next";
 
 type Props = {};
