@@ -55,7 +55,8 @@ const Index = ({}: Props) => {
             <p className="text-white mt-3">
               You can use the buttons below to give more specific details. These
               are optional. If you're unsure what the terms mean, it's better to
-              skip this part!
+              skip this part! These qualities aren't necessarily good or bad,
+              they just provide additional information.
             </p>
           </div>
         </div>

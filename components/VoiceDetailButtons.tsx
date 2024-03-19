@@ -23,6 +23,21 @@ export default function VoiceDetailButtons() {
       value: "Low Pitch",
       color: "bg-emerald-400/30 hover:bg-emerald-400/70 text-white",
     },
+    {
+      name: "Breathy",
+      value: "Breathy",
+      color: "bg-sky-400/30 hover:bg-sky-400/70 text-white",
+    },
+    {
+      name: "Not Understandable",
+      value: "NotUnderstandable",
+      color: "bg-emerald-400/30 hover:bg-emerald-400/70 text-white",
+    },
+    {
+      name: "Recording Quality Issues",
+      value: "RecordingQuality",
+      color: "bg-sky-400/30 hover:bg-sky-400/70 text-white",
+    },
   ];
 
   return (

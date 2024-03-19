@@ -17,7 +17,7 @@ export default function Nav() {
           href="#"
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-transblue via-white to-transpink">
-            Trans Voice
+            Metaphonic
           </span>
         </a>
 
