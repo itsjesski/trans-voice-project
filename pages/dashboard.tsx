@@ -14,6 +14,19 @@ const Index = ({}: Props) => {
             </h2>
           </div>
         </div>
+        <div className="relative flex flex-col w-full self-center mt-20">
+          <div className="justify-self-center w-full justify-center">
+            <h2 className="text-3xl font-extrabold dark:text-white">
+              Your Recordings
+            </h2>
+            <p className="text-white mt-3">
+              You can find your recordings below along with the feedback.
+              Everything is anonymous. Don't be upset if you don't get the
+              feedback you were hoping for. It's all part of the process. Keep
+              practicing!
+            </p>
+          </div>
+        </div>
         <div className="relative flex flex-col w-full self-center">
           <div className="justify-self-center w-full justify-center">
             <VoiceTable />
