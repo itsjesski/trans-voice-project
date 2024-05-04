@@ -1,7 +1,9 @@
 import mongoose, { Schema, Types } from "mongoose";
 
-export interface User extends mongoose.Document {
+export interface User {
   discordId: string;
+  username: string;
+  avatarUrl?: string;
   isBanned: boolean;
   isAdmin: boolean;
   voices: Types.ObjectId[];
@@ -12,6 +14,14 @@ const UserSchema = new mongoose.Schema<User>(
     discordId: {
       type: String,
       required: [true, "Discord ID required"],
+    },
+    username: {
+      type: String,
+      required: [true, "Username required"],
+    },
+    avatarUrl: {
+      type: String,
+      required: false,
     },
     isBanned: {
       type: Boolean,
@@ -29,4 +39,5 @@ const UserSchema = new mongoose.Schema<User>(
 );
 
 export const UserModel =
-  mongoose.models.User ?? mongoose.model<User>("User", UserSchema);
+  (mongoose.models.User as mongoose.Model<User>) ??
+  mongoose.model<User>("User", UserSchema);
