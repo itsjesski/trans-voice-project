@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import type { User } from "../models/User";
+import type { User } from "../../models/User";
 
 declare module "next-auth" {
   /**

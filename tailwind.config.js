@@ -2,6 +2,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
+  darkMode: 'selector',
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,10 +17,10 @@ module.exports = {
       backgroundImage: {
         sitebackground: "url('header.png')",
       },
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };

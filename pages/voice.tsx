@@ -2,12 +2,13 @@ import { GetServerSideProps } from "next";
 import Player from "../components/Player";
 import VoiceDetailButtons from "../components/VoiceDetailButtons";
 import VoiceRatingButtons from "../components/VoiceRatingButtons";
+import { Container } from "@/components/Container";
 
 type Props = {};
 
 const Index = ({}: Props) => {
   return (
-    <>
+    <Container>
       <div className="flex flex-col w-full justify-center lg:items-start overflow-y-hidden">
         <div className="relative flex flex-col w-full self-center">
           <div className="justify-self-center w-full justify-center">
@@ -68,7 +69,7 @@ const Index = ({}: Props) => {
           </div>
         </div>
       </div>
-    </>
+    </Container>
   );
 };
 
