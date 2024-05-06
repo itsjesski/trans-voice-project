@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import VoiceTable from "../components/VoiceTable";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { Container } from "@/components/Container";
+import dayjs from "dayjs";
 
 type Props = {};
 
@@ -47,9 +48,31 @@ const Dashboard = ({
   username: string;
   avatarUrl?: string;
 }) => {
+  // determine if morning, afternoon, or evening with dayjs
+  const currentHour = dayjs().hour();
+  let greeting = "Hello";
+  if (currentHour >= 5 && currentHour < 12) {
+    greeting = "Good morning";
+  } else if (currentHour >= 12 && currentHour < 18) {
+    greeting = "Good afternoon";
+  } else {
+    greeting = "Good evening";
+  }
+
   return (
     <>
-      <DashboardHeader />
+      <header>
+        <h1 className="text-3xl font-bold leading-tight tracking-tight text-white">
+          {greeting}, {username}!
+        </h1>
+      </header>
+      {/* <div className="relative flex flex-col w-full self-center mb-5">
+        <div className="justify-self-center w-full justify-center">
+          <h2 className="text-4xl dark:text-white">
+            {greeting}, {username}!
+          </h2>
+        </div>
+      </div> */}
       <div className="relative flex flex-col w-full self-center mt-20">
         <div className="justify-self-center w-full justify-center">
           <h2 className="text-3xl font-extrabold dark:text-white">

@@ -16,8 +16,11 @@ const Login: NextPageWithLayout = () => {
       initial={{ scale: 0.9 }}
       animate={{ scale: 1.0, transition: { duration: 0.2 } }}
     >
-      <Link href="/" aria-label="Home">
-        <Logo className="mx-auto h-40 w-auto" />
+      <Link href="/" aria-label="Home" className="flex flex-col">
+        <Logo className="mx-auto !h-20" />
+        <h1 className="font-black text-5xl font-nunito text-white text-center">
+          Metaphonic
+        </h1>
       </Link>
       <div className="-mx-4 mt-10 flex-auto bg-gray-900/25 backdrop-filter backdrop-blur px-4 py-10 shadow-2xl shadow-gray-900/10 sm:mx-0 sm:flex-none rounded-3xl sm:p-16 sm:pb-10">
         <div className="relative">
@@ -33,7 +36,12 @@ const Login: NextPageWithLayout = () => {
           type="submit"
           color="indigo"
           className="mt-8 w-full !py-3"
-          onClick={() => signIn("discord", { callbackUrl: "/dashboard" })}
+          onClick={() => {
+            const query = new URLSearchParams(window.location.search);
+            signIn("discord", {
+              callbackUrl: query.get("callbackUrl") ?? "/dashboard",
+            });
+          }}
         >
           Continue with Discord
         </Button>

@@ -1,11 +1,19 @@
-import NextAuth from "next-auth";
+import NextAuth, { type DefaultSession, type DefaultUser } from "next-auth";
 import type { User } from "../../models/User";
 
 declare module "next-auth" {
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
-  //   interface Session {
-  //     user: User & { id: string; _id: string };
-  //   }
+  interface Session {
+    user: {
+      isAdmin: boolean;
+      isBanned: boolean;
+    } & DefaultSession["user"];
+  }
+
+  interface User extends DefaultUser {
+    isAdmin: boolean;
+    isBanned: boolean;
+  }
 }

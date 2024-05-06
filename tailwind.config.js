@@ -15,10 +15,11 @@ module.exports = {
         transpink: "#F5A9B8",
       },
       backgroundImage: {
-        sitebackground: "url('header.png')",
+        sitebackground: "url('/assets/bg.png')",
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        nunito: ['Nunito', 'Inter', ...defaultTheme.fontFamily.sans],
       },
     },
   },

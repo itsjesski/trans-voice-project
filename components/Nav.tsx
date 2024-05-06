@@ -16,6 +16,8 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { Avatar } from "./ui/avatar";
 import { signOut } from "next-auth/react";
+import { Logo } from "./Logo";
+import { ArrowRightIcon } from "@heroicons/react/16/solid";
 
 export default function Nav() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -35,10 +37,11 @@ export default function Nav() {
       <div className="relative z-50 flex justify-between py-8">
         <div className="relative z-10 flex items-center gap-16">
           <Link
-            className="flex items-center text-transblue no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+            className="flex items-center justify-center text-transblue no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
             href="/"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-transblue via-white to-transpink">
+            <Logo className="w-12 h-12 lg:w-16 lg:h-16 mr-2" />
+            <span className="font-nunito font-black text-white">
               Metaphonic
             </span>
           </Link>
@@ -104,8 +107,9 @@ export default function Nav() {
               </DropdownMenu>
             </Dropdown>
           ) : (
-            <Button color="pink" href="/login">
+            <Button outline href="/login">
               Sign In
+              <ArrowRightIcon className="w-10 h-10 text-white" />
             </Button>
           )}
         </div>
