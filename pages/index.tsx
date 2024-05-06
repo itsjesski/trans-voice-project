@@ -48,10 +48,10 @@ const Index = ({}: Props) => {
         <span className="z-10">from the community.</span>
       </h1>
       <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-gray-300">
-        Unbiased feedback is valuable tool for finding your true voice but is
+        Unbiased feedback is a valuable tool for finding your true voice but is
         often hard to obtain. That's why we've created a space for you to
-        anonymously share your voice and get insights that empower your voice
-        journey.
+        anonymously share your voice and get impartial insights that empower
+        your voice journey.
       </p>
     </Container>
   );
