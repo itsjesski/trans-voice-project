@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         transblue: "#5BCEFA",
         transpink: "#F5A9B8",
+        transpurple: "#C084FC"
       },
       backgroundImage: {
         sitebackground: "url('/assets/bg.png')",

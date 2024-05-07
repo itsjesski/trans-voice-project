@@ -18,6 +18,7 @@ import { Avatar } from "./ui/avatar";
 import { signOut } from "next-auth/react";
 import { Logo } from "./Logo";
 import { ArrowRightIcon } from "@heroicons/react/16/solid";
+import { usePathname } from "next/navigation";
 
 export default function Nav() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -29,8 +30,10 @@ export default function Nav() {
 
   const links = [
     { href: "/dashboard", label: "Dashboard" },
-    { href: "/voice", label: "Voices" },
+    { href: "/listen", label: "Listen" },
   ];
+
+  const pathName = usePathname();
 
   return (
     <Container>
@@ -53,8 +56,8 @@ export default function Nav() {
                   key={href}
                   href={href}
                   className={clsx(
-                    "relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm  transition-colors delay-150 hover:text-gray-50 hover:delay-0",
-                    router.pathname === href ? "text-white" : "text-gray-300"
+                    "relative -mx-3 -my-2 rounded-lg px-3 py-2 text transition-colors delay-150 hover:text-gray-100 hover:delay-0",
+                    router.pathname === href ? "text-white" : "text-gray-400"
                   )}
                   onMouseEnter={() => {
                     if (timeoutRef.current) {
@@ -69,12 +72,20 @@ export default function Nav() {
                   }}
                 >
                   <AnimatePresence>
-                    {hoveredIndex === index && (
+                    {(hoveredIndex === index ||
+                      (hoveredIndex == null && pathName === href)) && (
                       <motion.span
-                        className="absolute inset-0 rounded-lg bg-gray-900/50 backdrop-blur backdrop-filter "
+                        className="absolute inset-0 rounded-lg backdrop-blur backdrop-filter "
                         layoutId="hoverBackground"
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1, transition: { duration: 0.15 } }}
+                        animate={{
+                          opacity: 1,
+                          transition: { duration: 0.15 },
+                          backgroundColor:
+                            hoveredIndex == null && pathName === href
+                              ? "rgb(75 85 99 / 0.2)"
+                              : "rgb(75 85 99 / 0.35)",
+                        }}
                         exit={{
                           opacity: 0,
                           transition: { duration: 0.15 },

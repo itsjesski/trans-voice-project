@@ -44,6 +44,7 @@
     "node-cache": "^5.1.2",
     "node-json-db": "^2.3.0",
     "react": "^18.2.0",
+    "react-audio-voice-recorder": "^2.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.8.0",
     "react-use": "^17.5.0"

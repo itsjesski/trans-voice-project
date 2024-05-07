@@ -16,13 +16,6 @@ const Index = ({}: Props) => {
             className="absolute left-0 top-2/3 h-[0.58em] w-full fill-black/70 -z-10"
             preserveAspectRatio="none"
           >
-            {/* <defs>
-              <linearGradient id="gradient">
-                <stop offset="0%" stop-color="#60A5FA" />
-                <stop offset="50%" stop-color="#C084FC" />
-                <stop offset="100%" stop-color="#F471B5" />
-              </linearGradient>
-            </defs> */}
             <motion.path
               fill="white"
               initial={{ pathLength: 0, opacity: 0 }}
