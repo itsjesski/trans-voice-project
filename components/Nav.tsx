@@ -111,7 +111,7 @@ export default function Nav() {
                 {session?.user?.name}
                 <ChevronDownIcon />
               </DropdownButton>
-              <DropdownMenu>
+              <DropdownMenu className="z-[100]">
                 <DropdownItem onClick={() => signOut({ callbackUrl: "/" })}>
                   Log out
                 </DropdownItem>
