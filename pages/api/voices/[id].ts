@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import dbConnect from "../../../lib/dbConnect";
-import { VoiceModel } from "../../../models/Voice";
+import dbConnect from "../../../lib/db/dbConnect";
+import { VoiceModel } from "../../../models/Recording";
 
 export default async function handler(
   req: NextApiRequest,

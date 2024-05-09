@@ -1,9 +1,9 @@
 import mongoose, { Types } from "mongoose";
 
 export interface Report extends mongoose.Document {
-  reportType: "voice" | "rating-comment";
+  reportType: "recording" | "rating-comment";
   createdBy: Types.ObjectId;
-  voice?: Types.ObjectId;
+  recording?: Types.ObjectId;
   rating?: Types.ObjectId;
   comment?: string;
 }
@@ -12,17 +12,17 @@ const ReportSchema = new mongoose.Schema<Report>(
   {
     reportType: {
       type: String,
-      enum: ["voice", "rating-comment"],
-      default: "voice",
+      enum: ["recording", "rating-comment"],
+      default: "recording",
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: [true, "Created by required"],
     },
-    voice: {
+    recording: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Voice",
+      ref: "Recording",
       required: false,
     },
     rating: {

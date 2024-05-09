@@ -6,6 +6,7 @@ import type { NextPage } from "next";
 import { SessionProvider } from "next-auth/react";
 import { Layout } from "@/components/Layout";
 import { AnimatePresence } from "framer-motion";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement, key: string) => ReactNode;
@@ -14,6 +15,8 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
+
+const queryClient = new QueryClient();
 
 function MyApp({
   Component,
@@ -31,12 +34,14 @@ function MyApp({
       </Head>
 
       <SessionProvider session={session}>
-        <AnimatePresence initial={false} mode="wait">
-          {getLayout(
-            <Component {...pageProps} key={router.asPath} />,
-            router.asPath
-          )}
-        </AnimatePresence>
+        <QueryClientProvider client={queryClient}>
+          <AnimatePresence initial={false} mode="wait">
+            {getLayout(
+              <Component {...pageProps} key={router.asPath} />,
+              router.asPath
+            )}
+          </AnimatePresence>
+        </QueryClientProvider>
       </SessionProvider>
     </>
   );

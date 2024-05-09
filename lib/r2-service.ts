@@ -4,6 +4,7 @@ import {
   PutObjectCommand,
 } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { v4 as uuid } from "uuid";
 
 const ACCOUNT_ID = process.env.R2_ACCOUNT_ID ?? "";
 const ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID ?? "";
@@ -27,14 +28,20 @@ export async function getSignedFileUrl(fileKey: string) {
   );
 }
 
-export async function uploadFile(fileKey: string, file: Buffer) {
-  fileKey = sanitizeFileKey(fileKey);
+export async function uploadFile(file: Buffer) {
+  const fileKey = getFileKey();
   await S3.send(
-    new PutObjectCommand({ Bucket: BUCKET_NAME, Key: fileKey, Body: file })
+    new PutObjectCommand({
+      Bucket: BUCKET_NAME,
+      Key: fileKey,
+      Body: file,
+      ContentType: "audio/webm",
+    })
   );
   return fileKey;
 }
 
-function sanitizeFileKey(fileKey: string) {
-  return `${Date.now()}_${fileKey.replace(/[^0-9a-zA-Z.]/g, "")}`;
+function getFileKey() {
+  const id = uuid();
+  return `${Date.now()}_${id.replace(/[^0-9a-zA-Z.]/g, "")}`;
 }

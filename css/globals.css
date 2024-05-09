@@ -15,7 +15,7 @@ body {
     position: relative;
 }
 
-body:before {
+/* body:before {
   content: ' ';
   display: block;
   position: absolute;
@@ -29,4 +29,8 @@ body:before {
   background-position: 50% 0;
   background-size: cover;
   background-attachment: fixed;
+} */
+
+#headlessui-portal-root {
+    z-index: 9999;
 }

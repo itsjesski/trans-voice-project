@@ -9,6 +9,7 @@ declare module "next-auth" {
     user: {
       isAdmin: boolean;
       isBanned: boolean;
+      id: string;
     } & DefaultSession["user"];
   }
 
